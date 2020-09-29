@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/api/users", require("./routes/users"));
+app.use("/api/video", require("./routes/video"));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
