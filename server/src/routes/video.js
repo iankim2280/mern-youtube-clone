@@ -91,9 +91,18 @@ router.post("/uploadVideo", (req, res) => {
   // req = all the info from client
   const video = new Video(req.body);
   video.save((err, doc) => {
-    if (err) return res.json({ success: false, err });
+    if (err) return res.status(400).json({ success: false, err });
     res.status(200).json({ success: true });
   });
 });
 
+router.get("/getVideos", (req, res) => {
+  // bring video datas from DB and res to client
+  Video.find()
+    .populate("writer")
+    .exec((err, videos) => {
+      if (err) return res.status(400).json({ success: false, err });
+      res.status(200).json({ success: true, videos });
+    });
+});
 module.exports = router;
