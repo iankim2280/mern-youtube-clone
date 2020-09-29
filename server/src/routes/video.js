@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-// import { Video } from "../models/Video";
+import { Video } from "../models/Video";
 import { auth } from "../middlewares/auth";
 // import path from "path";
 import multer from "multer";
@@ -84,6 +84,16 @@ router.post("/thumbnail", (req, res) => {
       // %b input basename ( filename w/o extension )
       filename: "thumbnail-%b.png",
     });
+});
+
+router.post("/uploadVideo", (req, res) => {
+  // Save the ideo info
+  // req = all the info from client
+  const video = new Video(req.body);
+  video.save((err, doc) => {
+    if (err) return res.json({ success: false, err });
+    res.status(200).json({ success: true });
+  });
 });
 
 module.exports = router;
