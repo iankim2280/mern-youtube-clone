@@ -11,11 +11,13 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "center",
         fontSize: "1rem",
+        fontSize: "1rem",
+        borderTop: "1px solid black",
       }}
     >
       <p>
         {" "}
-        Happy Coding <Icon type="smile" />
+        footer <Icon type="smile" />
       </p>
     </div>
   );

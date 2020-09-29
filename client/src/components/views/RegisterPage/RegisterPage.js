@@ -37,12 +37,12 @@ const RegisterPage = (props) => {
       initialValues={{
         email: "",
         lastName: "",
-        name: "",
+        firstname: "",
         password: "",
         confirmPassword: "",
       }}
       validationSchema={Yup.object().shape({
-        name: Yup.string().required("Name is required"),
+        firstname: Yup.string().required("First Name is required"),
         lastName: Yup.string().required("Last Name is required"),
         email: Yup.string()
           .email("Email is invalid")
@@ -59,7 +59,7 @@ const RegisterPage = (props) => {
           let dataToSubmit = {
             email: values.email,
             password: values.password,
-            name: values.name,
+            firstname: values.firstname,
             lastname: values.lastname,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`,
           };
@@ -96,22 +96,22 @@ const RegisterPage = (props) => {
               {...formItemLayout}
               onSubmit={handleSubmit}
             >
-              <Form.Item required label="Name">
+              <Form.Item required label="First Name">
                 <Input
-                  id="name"
-                  placeholder="Enter your name"
+                  id="firstname"
+                  placeholder="Enter your first name"
                   type="text"
-                  value={values.name}
+                  value={values.firstname}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.name && touched.name
+                    errors.firstname && touched.firstname
                       ? "text-input error"
                       : "text-input"
                   }
                 />
-                {errors.name && touched.name && (
-                  <div className="input-feedback">{errors.name}</div>
+                {errors.firstname && touched.firstname && (
+                  <div className="input-feedback">{errors.firstname}</div>
                 )}
               </Form.Item>
 
