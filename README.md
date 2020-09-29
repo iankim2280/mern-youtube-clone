@@ -2,6 +2,7 @@
 
 - [x] initialize server setting with babel - Login, Register, Authentication, Logout
 - [x] applied middlewares, bcrypt, token, cookie
+- [x] video upload with multer
 
 ### Client - Login, Register, Logout pages
 
