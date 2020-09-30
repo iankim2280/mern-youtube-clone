@@ -86,6 +86,7 @@ router.post("/thumbnail", (req, res) => {
     });
 });
 
+// video upload page
 router.post("/uploadVideo", (req, res) => {
   // Save the ideo info
   // req = all the info from client
@@ -96,6 +97,7 @@ router.post("/uploadVideo", (req, res) => {
   });
 });
 
+// for the landing page
 router.get("/getVideos", (req, res) => {
   // bring video datas from DB and res to client
   Video.find()
@@ -106,6 +108,7 @@ router.get("/getVideos", (req, res) => {
     });
 });
 
+// video detail page
 router.post("/getVideoDetail", (req, res) => {
   Video.findOne({ _id: req.body.videoId })
     // populate = bring every info from writer
