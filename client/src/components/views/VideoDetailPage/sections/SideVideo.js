@@ -28,8 +28,7 @@ const SideVideo = () => {
         }}
       >
         <div style={{ width: "40%", marginBottom: "1rem" }}>
-          {/* <a href={`/video/${video._id}`} style={{ color: "gray" }}> */}
-          <a href>
+          <a href={`/video/${video._id}`} style={{ color: "gray" }}>
             <img
               style={{ width: "100%" }}
               src={`http://localhost:5000/${video.thumbnail}`}
@@ -40,7 +39,6 @@ const SideVideo = () => {
 
         <div style={{ width: "50%", paddingLeft: "1rem" }}>
           <a href={`/video/${video._id}`} style={{ color: "gray" }}>
-            {/* <a href> */}
             <span style={{ fontSize: "1rem", color: "black" }}>
               {video.title}
             </span>
