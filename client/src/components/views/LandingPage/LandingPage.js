@@ -28,7 +28,7 @@ const LandingPage = () => {
     return (
       <Col lg={6} md={8} xs={24} key={index}>
         <div style={{ position: "relative" }}>
-          <a href={`/video/post/${video._id}`}>
+          <a href={`/video/${video._id}`}>
             <img
               style={{ width: "100%" }}
               alt="thumbnail"
