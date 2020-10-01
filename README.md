@@ -3,6 +3,7 @@
 - [x] initialize server setting with babel - Login, Register, Authentication, Logout
 - [x] applied middlewares, bcrypt, token, cookie
 - [x] video upload with multer, ffmpeg
+- [x] subscribe
 
 ### Client - Login, Register, Logout pages
 
@@ -11,9 +12,8 @@
 ##To use this application,
 
 ```
-make .env file with PORT inside root folder
-make dev.js file inside config folder
-put mongoDB info into dev.js file
+make .env file with PORT e.g. 5000 inside root folder
+make dev.js file inside config folder and put mongoDB info into dev.js file
 Type " yarn install " inside the root directory ( Download Server Dependencies )
 Type " yarn install " inside the client directory ( Download Front-end Dependencies )
 ```
