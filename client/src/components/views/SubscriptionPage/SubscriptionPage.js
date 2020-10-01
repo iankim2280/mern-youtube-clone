@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { FaCode } from "react-icons/fa";
 import { Card, Avatar, Col, Typography, Row } from "antd";
 import Axios from "axios";
 import moment from "moment";
@@ -7,18 +6,21 @@ import moment from "moment";
 const { Title } = Typography;
 const { Meta } = Card;
 
-const LandingPage = () => {
+const SubscriptionPage = () => {
   const [Videos, setVideos] = useState([]);
-
+  const subscriptionVariables = {
+    userFrom: localStorage.getItem("userId"),
+  };
   useEffect(() => {
-    Axios.get("/api/video/getVideos").then((res) => {
-      if (res.data.success) {
-        // console.log(res.data.videos);
-        setVideos(res.data.videos);
-      } else {
-        alert("Failed to get Videos");
+    Axios.post("/api/video/getSubscriptionVideos", subscriptionVariables).then(
+      (res) => {
+        if (res.data.success) {
+          setVideos(res.data.videos);
+        } else {
+          alert("Failed to get Videos");
+        }
       }
-    });
+    );
   }, []);
 
   const renderCards = Videos.map((video, index) => {
@@ -73,12 +75,11 @@ const LandingPage = () => {
 
   return (
     <div style={{ width: "85%", margin: "3rem auto" }}>
-      <Title level={2}> Recommended </Title>
+      <Title level={2}> Subscription </Title>
       <hr />
 
       <Row gutter={16}>{renderCards}</Row>
     </div>
   );
 };
-
-export default LandingPage;
+export default SubscriptionPage;

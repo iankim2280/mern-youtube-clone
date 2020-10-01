@@ -1,6 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { Video } from "../models/Video";
+import { Subscriber } from "../models/Subscriber";
 import { auth } from "../middlewares/auth";
 // import path from "path";
 import multer from "multer";
@@ -119,4 +120,25 @@ router.post("/getVideoDetail", (req, res) => {
     });
 });
 
+router.post("/getSubscriptionVideos", (req, res) => {
+  //Need to find all of the Users that I am subscribing to From Subscriber Collection
+  Subscriber.find({ userFrom: req.body.userFrom }).exec((err, subsInfo) => {
+    if (err) return res.status(400).json({ success: false, err });
+
+    let subscribedUser = [];
+
+    subsInfo.map((subscriber, i) => {
+      subscribedUser.push(subscriber.userTo);
+    });
+    //Need to Fetch all of the Videos that belong to the Users that I found in previous step.
+    // find muliple users using mongodb query $in
+    Video.find({ writer: { $in: subscribedUser } })
+      // bring every info from writer using populate
+      .populate("writer")
+      .exec((err, videos) => {
+        if (err) return res.status(400).json({ success: false, err });
+        res.status(200).json({ success: true, videos });
+      });
+  });
+});
 module.exports = router;

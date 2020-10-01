@@ -2,20 +2,23 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 
 const Subscribe = (props) => {
+  const userTo = props.userTo;
+  const userFrom = props.userFrom;
+
   const [SubscribeNumber, setSubscribeNumber] = useState(0);
   const [Subscribed, setSubscribed] = useState(false);
 
   const onSubscribe = () => {
-    // already subscribed
-    let subscribeVariable = {
-      userTo: props.userTo,
-      userFrom: props.userFrom,
+    let subscribeVariables = {
+      userTo: userTo,
+      userFrom: userFrom,
     };
+
     if (Subscribed) {
-      Axios.post("/api/subscribe/unSubscribe", subscribeVariable).then(
-        (response) => {
-          if (response.data.success) {
-            // -1 from current subscribed number
+      //when we are already subscribed
+      Axios.post("/api/subscribe/unSubscribe", subscribeVariables).then(
+        (res) => {
+          if (res.data.success) {
             setSubscribeNumber(SubscribeNumber - 1);
             setSubscribed(!Subscribed);
           } else {
@@ -24,19 +27,20 @@ const Subscribe = (props) => {
         }
       );
     } else {
-      Axios.post("/api/subscribe/subscribe", subscribeVariable).then((res) => {
+      // when we are not subscribed yet
+      Axios.post("/api/subscribe/subscribe", subscribeVariables).then((res) => {
         if (res.data.success) {
           setSubscribeNumber(SubscribeNumber + 1);
           setSubscribed(!Subscribed);
-        } else alert("Failed to subscribe");
+        } else {
+          alert("Failed to subscribe");
+        }
       });
     }
-    // not a subscriber
   };
+
   useEffect(() => {
-    let subscribeNumberVariables = {
-      userTo: props.userTo,
-    };
+    const subscribeNumberVariables = { userTo: userTo, userFrom: userFrom };
     Axios.post("/api/subscribe/subscribeNumber", subscribeNumberVariables).then(
       (res) => {
         if (res.data.success) {
@@ -47,11 +51,7 @@ const Subscribe = (props) => {
       }
     );
 
-    let subscribedUserVariables = {
-      userTo: props.userTo,
-      userFrom: localStorage.getItem("userId"),
-    };
-    Axios.post("/api/subscribe/subscribed", subscribedUserVariables).then(
+    Axios.post("/api/subscribe/subscribed", subscribeNumberVariables).then(
       (res) => {
         if (res.data.success) {
           setSubscribed(res.data.subcribed);
