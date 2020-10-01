@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static("uploads"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/video", require("./routes/video"));
-app.use("/api/subscriber", require("./routes/subscribe"));
+app.use("/api/subscribe", require("./routes/subscribe"));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);

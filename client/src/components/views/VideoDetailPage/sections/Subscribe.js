@@ -5,8 +5,36 @@ const Subscribe = (props) => {
   const [SubscribeNumber, setSubscribeNumber] = useState(0);
   const [Subscribed, setSubscribed] = useState(false);
 
+  const onSubscribe = () => {
+    // already subscribed
+    let subscribeVariable = {
+      userTo: props.userTo,
+      userFrom: props.userFrom,
+    };
+    if (Subscribed) {
+      Axios.post("/api/subscribe/unSubscribe", subscribeVariable).then(
+        (response) => {
+          if (response.data.success) {
+            // -1 from current subscribed number
+            setSubscribeNumber(SubscribeNumber - 1);
+            setSubscribed(!Subscribed);
+          } else {
+            alert("Failed to unsubscribe");
+          }
+        }
+      );
+    } else {
+      Axios.post("/api/subscribe/subscribe", subscribeVariable).then((res) => {
+        if (res.data.success) {
+          setSubscribeNumber(SubscribeNumber + 1);
+          setSubscribed(!Subscribed);
+        } else alert("Failed to subscribe");
+      });
+    }
+    // not a subscriber
+  };
   useEffect(() => {
-    const subscribeNumberVariables = {
+    let subscribeNumberVariables = {
       userTo: props.userTo,
     };
     Axios.post("/api/subscribe/subscribeNumber", subscribeNumberVariables).then(
@@ -19,7 +47,7 @@ const Subscribe = (props) => {
       }
     );
 
-    const subscribedUserVariables = {
+    let subscribedUserVariables = {
       userTo: props.userTo,
       userFrom: localStorage.getItem("userId"),
     };
@@ -37,7 +65,7 @@ const Subscribe = (props) => {
   return (
     <div>
       <button
-        onClick
+        onClick={onSubscribe}
         style={{
           backgroundColor: `${Subscribed ? "#AAAAAA" : "#CC0000"}`,
           borderRadius: "4px",
