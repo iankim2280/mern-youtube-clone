@@ -8,6 +8,8 @@
 ### Client - Login, Register, Logout pages
 
 - [x] applied Axios, React-router-dom
+- [x] Upload video
+- [x] Subscribe and subscription page
 
 ##To use this application,
 
