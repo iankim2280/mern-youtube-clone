@@ -1,5 +1,5 @@
 {
-  "name": "node-react",
+  "name": "nodeapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,26 +8,34 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "install": "yarn --cwd server install && yarn --cwd client install",
-    "build": "cd client && yarn build",
-    "install-client": "cd client && yarn install",
-    "heroku-postbuild": "yarn run install-client && yarn build",
+    "start": "babel-node server/index.js",
+    "backend": "nodemon --exec babel-node server/index.js",
+    "frontend": "npm run front --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn --cwd server dev\" \"yarn --cwd client start\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iankim2280/node-react.git"
+    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iankim2280/node-react/issues"
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "nodemon": "^2.0.4"
   },
-  "homepage": "https://github.com/iankim2280/node-react#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "concurrently": "^5.3.0",
-    "fluent-ffmpeg": "^2.1.2"
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.6",
+    "multer": "^1.4.2",
+    "react-router-dom": "^5.2.0"
   }
 }
