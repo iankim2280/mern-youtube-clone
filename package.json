@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "yarn --cwd server && yarn --cwd client",
+    "install": "npm run --cwd server && npm run --cwd client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"yarn --cwd server dev\" \"yarn --cwd client start\""
+    "dev": "concurrently \"npm run --cwd server dev\" \"npm run --cwd client start\""
   },
   "repository": {
     "type": "git",
