@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import key from "../config/key";
 
-dotenv.config();
+// dotenv.config();
 
 mongoose
   .connect(key.mongoURI(process.env.NODE_ENV), {
