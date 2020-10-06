@@ -1,14 +1,14 @@
 import express from "express";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import path from "path";
+// import path from "path";
 import cors from "cors";
 
 import "./middlewares/db";
-dotenv.config();
+// dotenv.config();
 const app = express();
-const { PORT } = process.env;
+const port = process.env.PORT || 5000;
 
 // when you open the localhost on browser
 app.get("/", (req, res) => res.send("hello world"));
@@ -30,8 +30,22 @@ app.use("/api/video", require("./routes/video"));
 app.use("/api/subscribe", require("./routes/subscribe"));
 app.use("/api/comment", require("./routes/comment"));
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on http://localhost:${PORT}`);
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  // All the javascript and css files will be read and served from this folder
+  app.use(express.static("../../client/build"));
+
+  // index.html for all page routes    html or routing and naviagtion
+  // app.get("*", (req, res) => {
+  //   res.sendFile(
+  //     path.resolve(__dirname, "../../client", "build", "index.html")
+  //   );
+  // });
+}
+
+app.listen(port, () => {
+  console.log(`Server is listening on http://localhost:${port}`);
 });
 
 export default app;

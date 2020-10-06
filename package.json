@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": {
+    "node": "14.11.0",
+    "npm": "6.14.8"
+  },
   "scripts": {
-    "install": "npm run --cwd server && npm run --cwd client",
+    "install": "yarn --cwd server && yarn --cwd client",
+    "build": "cd client && yarn build",
+    "install-client": "cd client && yarn install",
+    "heroku-postbuild": "yarn run install-client && yarn build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run --cwd server dev\" \"npm run --cwd client start\""
+    "dev": "concurrently \"yarn --cwd server dev\" \"yarn --cwd client start\""
   },
   "repository": {
     "type": "git",
