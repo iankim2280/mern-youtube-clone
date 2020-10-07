@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Typography, message, Input, Button, Icon } from "antd";
+import { Form, Typography, message, Input, Button } from "antd";
 import Dropzone from "react-dropzone";
 import Axios from "axios";
 import { useSelector } from "react-redux";
@@ -123,7 +123,7 @@ const VideoUploadPage = (props) => {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-                <Icon type="plus" style={{ fontSize: "3em" }} />
+                <div style={{ fontSize: "3em" }}>hello</div>
               </div>
             )}
           </Dropzone>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "antd";
 
 const Footer = () => {
   return (
@@ -14,10 +13,7 @@ const Footer = () => {
         borderTop: "1px solid black",
       }}
     >
-      <p>
-        {" "}
-        footer <Icon type="smile" />
-      </p>
+      <p> footer</p>
     </div>
   );
 };

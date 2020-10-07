@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
-import { Drawer, Button, Icon } from "antd";
+import { Drawer, Button } from "antd";
 import "./Sections/Navbar.css";
 
 const NavBar = () => {
@@ -35,7 +35,7 @@ const NavBar = () => {
           type="primary"
           onClick={showDrawer}
         >
-          <Icon type="align-right" />
+          <div>hello</div>
         </Button>
         <Drawer
           title="Basic Drawer"
