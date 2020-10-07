@@ -59,6 +59,7 @@ const LandingPage = () => {
           </a>
         </div>
         <br />
+        {console.log(video)}
         <Meta
           avatar={<Avatar src={video.writer.image} />}
           title={video.title}

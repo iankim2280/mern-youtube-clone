@@ -41,6 +41,7 @@ const VideoUploadPage = (props) => {
   const onCategoryChangeHandler = (e) => {
     setCategory(e.currentTarget.value);
   };
+
   const onDrop = (files) => {
     let formData = new FormData();
     const config = {
@@ -123,7 +124,7 @@ const VideoUploadPage = (props) => {
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
-                <div style={{ fontSize: "3em" }}>hello</div>
+                <div style={{ fontSize: "3em" }}>Upload</div>
               </div>
             )}
           </Dropzone>
