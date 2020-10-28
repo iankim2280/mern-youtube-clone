@@ -19,7 +19,7 @@ app.get("/api/hello", (req, res) => {
 app.use(cors());
 
 // application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 // application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -40,18 +40,29 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// const port = process.env.PORT || 5000;
-// app.listen(port, () => {
-//   console.log(`Server is listening on http://localhost:${port}`);
-// });
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
 
-app.listen(process.env.PORT || 5000, function () {
-  console.log(
-    "Express server listening on port %d in %s mode",
-    this.address().port,
-    app.settings.env
-  );
+  // index.html for all page routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+}
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server is listening on http://localhost:${port}`);
 });
+
+// app.listen(process.env.PORT || 5000, function () {
+//   console.log(
+//     "Express server listening on port %d in %s mode",
+//     this.address().port,
+//     app.settings.env
+//   );
+// });
 
 export default app;
 // why do I use authentication? only authenticated users can use the app properly.
