@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import LeftMenu from "./Sections/LeftMenu";
 import RightMenu from "./Sections/RightMenu";
-import { Drawer, Button } from "antd";
+import {Drawer, Button} from "antd";
 import "./Sections/Navbar.css";
 
 const NavBar = () => {
@@ -16,10 +16,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav
-      className="menu"
-      style={{ position: "fixed", zIndex: 5, width: "100%" }}
-    >
+    <nav className="menu" style={{position: "fixed", zIndex: 5, width: "100%"}}>
       <div className="menu__logo">
         <a href="/">Logo</a>
       </div>
@@ -35,7 +32,7 @@ const NavBar = () => {
           type="primary"
           onClick={showDrawer}
         >
-          <div>hello</div>
+          <div>Menu</div>
         </Button>
         <Drawer
           title="Basic Drawer"

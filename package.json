@@ -10,9 +10,9 @@
   "scripts": {
     "start": "babel-node server/server.js",
     "backend": "nodemon --exec babel-node server/server.js",
-    "frontend": "npm run start --prefix client",
+    "frontend": "npm run dev --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "dev": "concurrently \"npm run backend\" \"npm run dev --prefix client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
