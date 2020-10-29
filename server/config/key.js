@@ -1,5 +1,5 @@
-import { prod_config } from "./prod";
-import { dev_config } from "./dev";
+import {prod_config} from "./prod";
+import {dev_config} from "./dev";
 
 const key = {
   mongoURI: (key) => {

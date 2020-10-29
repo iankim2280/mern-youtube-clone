@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { List, Avatar, Row, Col } from "antd";
+import React, {useEffect, useState} from "react";
+import {List, Avatar, Row, Col} from "antd";
 import axios from "axios";
 import SideVideo from "./Sections/SideVideo";
 import Subscribe from "./Sections/Subscribe";
@@ -18,7 +18,7 @@ function VideoDetailPage(props) {
       if (res.data.success) {
         setVideo(res.data.videoDetail);
       } else {
-        alert("Failed to get video Info");
+        alert("Failed to get video Infos");
       }
     });
     axios.post("/api/comment/getComments", videoVariable).then((response) => {
@@ -40,10 +40,10 @@ function VideoDetailPage(props) {
         <Col lg={18} xs={24}>
           <div
             className="postPage"
-            style={{ width: "100%", padding: "3rem 4em" }}
+            style={{width: "100%", padding: "3rem 4em"}}
           >
             <video
-              style={{ width: "100%" }}
+              style={{width: "100%"}}
               src={`http://localhost:5000/${Video.filePath}`}
               controls
             ></video>
