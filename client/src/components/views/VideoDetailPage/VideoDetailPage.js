@@ -18,7 +18,7 @@ function VideoDetailPage(props) {
       if (res.data.success) {
         setVideo(res.data.videoDetail);
       } else {
-        alert("Failed to get video Info");
+        alert("Failed to get video Infos");
       }
     });
     axios.post("/api/comment/getComments", videoVariable).then((response) => {
