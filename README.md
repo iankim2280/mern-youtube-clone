@@ -1,5 +1,7 @@
 ## This project was built with NodeJS, ExpressJS, Create-react-app, MongoDB, ReduxJS
 
+Open [https://sleepy-ravine-77265.herokuapp.com/](https://sleepy-ravine-77265.herokuapp.com/) to check live demo in the browser.
+
 - [x] Initialize server setting with babel - Login, Register, Authentication, Logout
 - [x] Applied middlewares, bcrypt, token, cookie
 - [x] Video upload with multer, ffmpeg
